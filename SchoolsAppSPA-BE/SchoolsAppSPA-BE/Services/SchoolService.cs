@@ -24,13 +24,36 @@ namespace SchoolsAppSPA_BE.Services
         public async Task<List<ViewSchool>> GetSchoolsAsync()
         {
             List<School> allSchools = await _context.Schools.Include(s=>s.Students).ToListAsync();
-            List<ViewSchool> schools = new List<ViewSchool>();
+            List<ViewSchool> viewSchools = new List<ViewSchool>();
             foreach (var school in allSchools)
             {
-                schools.Add(_mapper.Map<ViewSchool>(school));
+                viewSchools.Add(_mapper.Map<ViewSchool>(school));
             }
-            return schools;
+            return viewSchools;
         }
+        public async Task<ViewSchool> GetSchoolAsync(int id)
+        {
+            School school = await _context.Schools.Include(s => s.Students).Where(i=>i.Id == id).FirstOrDefaultAsync();
+            if (school == null)
+            {
+                return null;
+            }
+            ViewSchool viewSchool = _mapper.Map<ViewSchool>(school);
+            return viewSchool;
+        }
+        public async Task<int> PostSchool(CreateSchool createSchool)
+        {
+
+        }
+        public async Task<int> PutSchool(int id, CreateSchool createSchool)
+        {
+
+        }
+        public async Task<int> DeleteSchool(int id)
+        {
+
+        }
+
 
 
     }
