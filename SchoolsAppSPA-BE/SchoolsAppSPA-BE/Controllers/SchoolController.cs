@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SchoolsAppSPA_BE.Data;
-using SchoolsAppSPA_BE.Models;
+using SchoolsAppSPA_BE.Dtos;
 using SchoolsAppSPA_BE.Services;
 
 namespace SchoolsAppSPA_BE.Controllers
@@ -28,75 +24,69 @@ namespace SchoolsAppSPA_BE.Controllers
             return Ok(schoolList);
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult> GetSchool(int id)
-        //{
-        //    var school = await _context.Schools.FindAsync(id);
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetSchool(int id)
+        {
+            try
+            {
+                var school = await _schoolService.GetSchoolAsync(id);
+                return Ok(school);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //    if (school == null)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpPost]
+        public async Task<ActionResult> PostSchool(CreateSchool createSchool)
+        {
+            try
+            {
+                var createdId = await _schoolService.PostSchoolAsync(createSchool);
+                return Created("School has been created. Id: ", createdId);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-        //    return school;
-        //}
+        }
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutSchool(int id, School school)
-        //{
-        //    if (id != school.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutSchool(int id, CreateSchool createSchool)
+        {
+            try
+            {
+                var createdId = await _schoolService.PutSchoolAsync(id, createSchool);
+                return Created("School has been updated. Id: ", createdId);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //    _context.Entry(school).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!SchoolExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
-        //[HttpPost]
-        //public async Task<ActionResult<School>> PostSchool(School school)
-        //{
-        //    _context.Schools.Add(school);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetSchool", new { id = school.Id }, school);
-        //}
-
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteSchool(int id)
-        //{
-        //    var school = await _context.Schools.FindAsync(id);
-        //    if (school == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Schools.Remove(school);
-        //    await _context.SaveChangesAsync();
-
-        //    return NoContent();
-        //}
-
-        //private bool SchoolExists(int id)
-        //{
-        //    return _context.Schools.Any(e => e.Id == id);
-        //}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteSchool(int id)
+        {
+            try
+            {
+                await _schoolService.DeleteSchoolAsync(id);
+                return Ok(id + " has been deleted");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
