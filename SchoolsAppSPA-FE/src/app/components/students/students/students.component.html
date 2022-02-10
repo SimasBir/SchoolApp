@@ -1,0 +1,10 @@
+<div class="card my-3">
+    <app-students-create 
+    (studentCreateEvent)="createStudent($event)">
+    </app-students-create>
+</div>
+<app-students-list 
+[studentsInput]="students" 
+(removeStudentEvent)="removeStudent($event)">
+</app-students-list>
+

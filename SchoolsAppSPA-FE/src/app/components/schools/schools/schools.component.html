@@ -1,0 +1,9 @@
+<div class="card my-3">
+    <app-schools-create 
+(schoolCreateEvent)="createSchool($event)">
+</app-schools-create>
+</div>
+<app-schools-list 
+[schoolsInput]="schools" 
+(removeSchoolEvent)="removeSchool($event)">
+</app-schools-list>
