@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, OnChanges } from '@angular/core';
 import School from 'src/app/Models/school.model';
 import StudentCreate from 'src/app/Models/student-create.model';
 import { SchoolsService } from 'src/app/services/schools.service';
@@ -10,17 +10,18 @@ import { SchoolsService } from 'src/app/services/schools.service';
 })
 export class StudentsCreateComponent implements OnInit {
   @Output() studentCreateEvent = new EventEmitter<any>();
-  
+  @Input() schoolsInput: School[] = [];
+
   public studentName: string = '';
   public schoolId: number = 0;
-  public schools: School[] = [];
 
   constructor(private schoolsService: SchoolsService) { }
 
   ngOnInit(): void {
-    this.schoolsService.getAll().subscribe((schoolsData) => {
-      this.schools = schoolsData;
-    })
+ 
+  }
+  ngOnChanges(changes:SimpleChanges){
+    // console.log(changes);
   }
 
   public createStudent() {

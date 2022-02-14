@@ -14,7 +14,11 @@
         <th scope="row">{{student.id}}</th>
         <td>{{student.name}}</td>
         <td>{{student.schoolName}}</td>
-        <td><button class="btn btn-danger" (click)="removeStudent(student.id)">Remove</button></td>
+        <td>
+          <div class="d-grid gap-1 d-md-flex">       
+            <button class="btn btn-outline-danger btn-sm" (click)="removeStudent(student.id)">Remove</button>
+          </div>
+        </td>
       </tr>
     </tbody>
 </table>

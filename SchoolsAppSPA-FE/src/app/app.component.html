@@ -1,10 +1,16 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <app-schools></app-schools>
+      <app-schools
+      (childToParent)="listSchool($event)"
+      (schoolId)="deleteSchool($event)"
+      ></app-schools>
     </div>
     <div class="col">
-      <app-students></app-students>
+      <app-students
+      [listSchools]="schools" 
+      [deleteSchoolId]="schoolId" 
+      ></app-students>
     </div>
   </div>
 </div>

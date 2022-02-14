@@ -1,18 +1,23 @@
 <h3>Schools</h3>
 
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let school of schoolsInput">
-        <th scope="row">{{school.id}}</th>
-        <td>{{school.name}}</td>
-        <td><button class="btn btn-danger" (click)="removeSchool(school.id)">Remove</button></td>
-      </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let school of schoolsInput">
+      <th scope="row" >{{school.id}}</th>
+      <td>{{school.name}}</td>
+      <td>
+      <div class="d-grid gap-1 d-md-flex">       
+        <!-- <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Edit</button> -->
+        <button class="btn btn-outline-danger btn-sm" (click)="removeSchool(school.id)">Remove</button>
+      </div>
+    </td>
+    </tr>
+  </tbody>
 </table>

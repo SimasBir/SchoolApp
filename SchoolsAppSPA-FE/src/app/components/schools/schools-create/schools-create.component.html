@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <h3 class="mt-2">Create Todo</h3>
-    <form>
+    <form (keyup.enter)="createSchool()">
       <div class="mb-3">
         <label class="form-label">Name</label>
         <input name="todoName" [(ngModel)]="schoolName" type="text" class="form-control" />

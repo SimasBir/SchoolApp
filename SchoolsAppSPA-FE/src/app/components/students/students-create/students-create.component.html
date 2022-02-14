@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <h3 class="mt-2">Create Todo</h3>
-  <form>
+  <form (keyup.enter)="createStudent()">
     <div class="mb-3">
       <label class="form-label">Name</label>
       <input name="todoName" [(ngModel)]="studentName" type="text" class="form-control" />
     </div>
     <select [(ngModel)]="schoolId" name="school" class="form-select" aria-label="Assign to school" required>
-      <option value={{school.id}} *ngFor="let school of schools; index as i;">{{school.name}}</option>
+      <option value={{school.id}} *ngFor="let school of schoolsInput; index as i;">{{school.name}}</option>
     </select>
     <button (click)="createStudent()" type="button" class="btn mt-3 btn-primary mb-3">
       Submit
