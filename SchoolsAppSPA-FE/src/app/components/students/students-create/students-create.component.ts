@@ -13,6 +13,7 @@ export class StudentsCreateComponent implements OnInit {
   @Input() schoolsInput: School[] = [];
 
   public studentName: string = '';
+  public studentSurname: string = '';
   public schoolId: number = 0;
 
   constructor(private schoolsService: SchoolsService) { }
@@ -27,6 +28,7 @@ export class StudentsCreateComponent implements OnInit {
   public createStudent() {
     let createStudent: StudentCreate = {
       name: this.studentName,
+      surname: this.studentSurname,
       schoolId: this.schoolId
     };
     this.studentCreateEvent.emit(createStudent);

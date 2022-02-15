@@ -5,6 +5,7 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Name</th>
+        <th scope="col">Surname</th>
         <th scope="col">School</th>
         <th scope="col">Actions</th>
       </tr>
@@ -13,6 +14,7 @@
       <tr *ngFor="let student of studentsInput">
         <th scope="row">{{student.id}}</th>
         <td>{{student.name}}</td>
+        <td>{{student.surname}}</td>
         <td>{{student.schoolName}}</td>
         <td>
           <div class="d-grid gap-1 d-md-flex">       

@@ -49,6 +49,7 @@ export class StudentsComponent implements OnInit, OnChanges {
     if (studentCreateEvent.name.length > 2) {
       let createStudent: StudentCreate = {
         name: studentCreateEvent.name,
+        surname: studentCreateEvent.surname,
         schoolId: studentCreateEvent.schoolId
       }
       this.studentsService.create(createStudent).subscribe((studentId) => {

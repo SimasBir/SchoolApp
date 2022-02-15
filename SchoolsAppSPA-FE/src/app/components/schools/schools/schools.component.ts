@@ -50,4 +50,25 @@ export class SchoolsComponent implements OnInit {
       console.warn("Name should be at least 3 symbols");
     }
   }
+
+  public updateSchool(schoolEvent: any): void {
+    if (schoolEvent.name.length > 2) {
+      let createSchool: SchoolCreate = {
+        name: schoolEvent.name
+      }
+      let id=schoolEvent.Id;
+      this.schoolsService.update(id, createSchool).subscribe((schoolId) => {
+        let school: School = {
+          id: schoolId,
+          name: createSchool.name
+        }
+        this.schools.push(school);
+      });
+      this.childToParent.emit(this.schools);
+      console.log("Add Schools is called");
+    }
+    else {
+      console.warn("Name should be at least 3 symbols");
+    }
+  }
 }

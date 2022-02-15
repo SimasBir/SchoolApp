@@ -10,14 +10,23 @@
   </thead>
   <tbody>
     <tr *ngFor="let school of schoolsInput">
-      <th scope="row" >{{school.id}}</th>
-      <td>{{school.name}}</td>
-      <td>
-      <div class="d-grid gap-1 d-md-flex">       
-        <!-- <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Edit</button> -->
-        <button class="btn btn-outline-danger btn-sm" (click)="removeSchool(school.id)">Remove</button>
-      </div>
-    </td>
+      <th scope="row">{{school.id}}</th>
+        <td>{{school.name}}</td>
+        <td>
+          <div class="d-grid gap-1 d-md-flex">
+            <button class="btn btn-outline-primary btn-sm" (click)="collapse.toggle()"
+              (click)="getId(school.id)" (click)="open(school.id)" [attr.aria-expanded]="!isCollapsed"
+              aria-controls="collapseExample">Edit</button>
+            <button class="btn btn-outline-danger btn-sm" (click)="removeSchool(school.id)">Remove</button>
+          </div>
+        </td>
     </tr>
   </tbody>
 </table>
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      Maybe edit somehow {{schoolId}}
+    </div>
+  </div>
+</div>

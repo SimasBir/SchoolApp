@@ -11,6 +11,8 @@ import { StudentsCreateComponent } from './components/students/students-create/s
 import { StudentsListComponent } from './components/students/students-list/students-list.component';
 import { StudentsComponent } from './components/students/students/students.component';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SchoolsUpdateComponent } from './components/schools/schools-update/schools-update.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { FormsModule } from '@angular/forms';
     SchoolsListComponent,
     StudentsComponent,
     StudentsCreateComponent,
-    StudentsListComponent
+    StudentsListComponent,
+    SchoolsUpdateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

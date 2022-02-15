@@ -8,6 +8,7 @@ namespace SchoolsAppSPA_BE.Models
 {
     public class Student : NamedEntity
     {
+        public string Surname { get; set; }
         public School School { get; set; }
         public int SchoolId { get; set; }
     }

@@ -19,6 +19,9 @@ export class SchoolsService {
   } 
   public create(schoolCreate: SchoolCreate) : Observable<number> {
     return this.httpClient.post<number>(`https://localhost:44365/school`, schoolCreate);
+  } 
+  public update(id:number,schoolCreate: SchoolCreate) : Observable<any> {
+    return this.httpClient.put<any>(`https://localhost:44365/school/${id}`, schoolCreate);
   }
 
   //https://localhost:44365/school
