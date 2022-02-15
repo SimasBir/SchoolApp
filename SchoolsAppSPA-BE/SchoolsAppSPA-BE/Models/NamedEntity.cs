@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolsAppSPA_BE.Models
 {
-    public class NamedEntity
+    public abstract class NamedEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

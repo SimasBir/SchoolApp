@@ -21,9 +21,9 @@ export class StudentsCreateComponent implements OnInit {
   ngOnInit(): void {
  
   }
-  ngOnChanges(changes:SimpleChanges){
-    // console.log(changes);
-  }
+  // ngOnChanges(changes:SimpleChanges){
+  //  console.log(changes);
+  // }
 
   public createStudent() {
     let createStudent: StudentCreate = {

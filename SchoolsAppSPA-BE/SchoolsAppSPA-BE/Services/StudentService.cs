@@ -24,11 +24,7 @@ namespace SchoolsAppSPA_BE.Services
         public async Task<List<ViewStudent>> GetStudentsAsync()
         {
             List<Student> allStudents = await _context.Students.Include(s => s.School).ToListAsync();
-            List<ViewStudent> viewStudents = new List<ViewStudent>();
-            foreach (var student in allStudents)
-            {
-                viewStudents.Add(_mapper.Map<ViewStudent>(student));
-            }
+            List<ViewStudent> viewStudents = _mapper.Map<List<ViewStudent>>(allStudents);
             return viewStudents;
         }
 
@@ -58,9 +54,13 @@ namespace SchoolsAppSPA_BE.Services
             {
                 throw new ArgumentException($"Student with the id {id} was not found");
             }
+
             student.Name = createStudent.Name;
+            student.Surname = createStudent.Surname;
             student.SchoolId = createStudent.SchoolId;
+
             _context.Update(student);
+
             await _context.SaveChangesAsync();
             return student.Id;
         }

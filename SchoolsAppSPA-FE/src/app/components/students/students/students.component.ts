@@ -38,11 +38,6 @@ export class StudentsComponent implements OnInit, OnChanges {
     // console.info(v, { responseType: 'text' }));
     this.students = this.students.filter(s => s.id != id);
   }
-  // public updateStudentList(updateStudentEvent:any){
-  //   this.studentsService.getAll().subscribe((studentsData) => {
-  //     this.students = studentsData;
-  //   })
-  // }
 
   public createStudent(studentCreateEvent: any): void {
 
