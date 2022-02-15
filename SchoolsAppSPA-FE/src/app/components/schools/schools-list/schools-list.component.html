@@ -14,7 +14,7 @@
         <td>{{school.name}}</td>
         <td>
           <div class="d-grid gap-1 d-md-flex">
-            <button class="btn btn-outline-primary btn-sm" (click)="collapse.toggle()"
+            <button class="btn btn-outline-primary btn-sm" 
               (click)="getId(school.id)" (click)="open(school.id)" [attr.aria-expanded]="!isCollapsed"
               aria-controls="collapseExample">Edit</button>
             <button class="btn btn-outline-danger btn-sm" (click)="removeSchool(school.id)">Remove</button>
@@ -23,10 +23,10 @@
     </tr>
   </tbody>
 </table>
-<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="container-fluid">
+<!-- <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="container-fluid">
   <div class="card">
     <div class="card-body">
       Maybe edit somehow {{schoolId}}
     </div>
   </div>
-</div>
+</div> -->

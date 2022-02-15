@@ -8,9 +8,11 @@ import School from 'src/app/Models/school.model';
   styleUrls: ['./schools-update.component.scss']
 })
 export class SchoolsUpdateComponent implements OnInit {
-  @Input() my_modal_title: string = "";
+  @Input() my_modal_title?: string; //nebutinas
   @Input() my_modal_schoolId: number = 0;
-  public schoolName: string = '';
+  public schoolName: string = "";
+  public school?: School;
+
 
   @Output() schoolUpdateEvent = new EventEmitter<any>();
   
@@ -18,11 +20,12 @@ export class SchoolsUpdateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  public updateSchool(){
-    let updateSchool: School = {
+
+  passBack() {
+    let school: School = {
       id: this.my_modal_schoolId,
-      name: this.schoolName
+      name: this.schoolName,      
     }
-    this.schoolUpdateEvent.emit(updateSchool);
-  }
+    this.activeModal.close(school);
+  }  
 }

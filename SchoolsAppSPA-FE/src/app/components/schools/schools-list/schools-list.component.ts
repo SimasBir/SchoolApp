@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import School from 'src/app/Models/school.model';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { SchoolsUpdateComponent } from '../schools-update/schools-update.component';
 
 @Component({
@@ -9,12 +9,13 @@ import { SchoolsUpdateComponent } from '../schools-update/schools-update.compone
   styleUrls: ['./schools-list.component.scss']
 })
 export class SchoolsListComponent implements OnInit {
-  public isCollapsed = true;
+  public isCollapsed = true; //hidden for now
   @Input() schoolsInput: School[] = [];
   @Output() removeSchoolEvent = new EventEmitter<number>();
+  @Output() updateSchoolEvent = new EventEmitter<any>();
   public schoolId?: number;
 
-  constructor(private modalService: NgbModal) { }
+   constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -26,9 +27,16 @@ export class SchoolsListComponent implements OnInit {
   }
 
   open(id: number) {
-    const modalRef = this.modalService.open(SchoolsUpdateComponent);
+    const modalRef = this.modalService.open(SchoolsUpdateComponent)
     modalRef.componentInstance.my_modal_title = 'Update school name';
     modalRef.componentInstance.my_modal_schoolId = this.schoolId;
-  }
 
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result)
+        this.updateSchoolEvent.emit(result);
+      }
+    }
+    );
+  }
 }

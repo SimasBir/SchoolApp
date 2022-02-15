@@ -18,8 +18,7 @@ export class StudentsCreateComponent implements OnInit {
 
   constructor(private schoolsService: SchoolsService) { }
 
-  ngOnInit(): void {
- 
+  ngOnInit(): void { 
   }
   // ngOnChanges(changes:SimpleChanges){
   //  console.log(changes);

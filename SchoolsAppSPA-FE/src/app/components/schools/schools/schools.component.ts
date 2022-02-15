@@ -56,15 +56,16 @@ export class SchoolsComponent implements OnInit {
       let createSchool: SchoolCreate = {
         name: schoolEvent.name
       }
-      let id=schoolEvent.Id;
+      let id=schoolEvent.id;
       this.schoolsService.update(id, createSchool).subscribe((schoolId) => {
         let school: School = {
           id: schoolId,
           name: createSchool.name
         }
+        this.schools = this.schools.filter(s => s.id != id);
         this.schools.push(school);
+        this.childToParent.emit(this.schools);
       });
-      this.childToParent.emit(this.schools);
       console.log("Add Schools is called");
     }
     else {

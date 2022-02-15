@@ -1,11 +1,8 @@
 <div class="modal-header">
-    <h4 class="modal-title">{{my_modal_title}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <h4 class="modal-title">{{my_modal_title}}</h4>    
   </div>
   <form >
-  <div class="modal-body" (keyup.enter)="updateSchool()">
+  <div class="modal-body" >
         <div class="mb-2 row">
           <label class="col-sm-2 col-form-label text-nowrap">New name</label>
           <div class="col-sm-10">
@@ -15,7 +12,7 @@
     <p>Id: {{my_modal_schoolId}}</p>    
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary mb-3" (click)="updateSchool()" (click)="activeModal.close('Close click')">
+    <button type="button" class="btn btn-primary mb-3" (click)="passBack()" (click)="activeModal.close('Save')">
         Submit
       </button>
     <button type="button"  class="btn btn-outline-dark mb-3" (click)="activeModal.close('Close click')">Close</button>
