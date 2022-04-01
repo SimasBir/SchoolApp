@@ -1,2 +1,2 @@
-# SchoolApp
-An attempt to create an full-stack SPA (single page application) for school management using .NET and Angular.
+# SchoolApp fullstack
+Fullstack SPA (single page application) project for school management using .NET with EFCore and Angular.
